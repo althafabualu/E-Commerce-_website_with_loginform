@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+}
+
+ footer {
+    background: #929090;
+    color: #000000;
+    padding: 1rem;
+    text-align: center;
+   
+}
+body {
+    padding: 2rem;
+   background-color: #000000;
+    background-size: cover;
+    height: 100vh;
+}
+header {
+    background: #929090;
+    color: #000000;
+    padding: 2rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #000000;
+    text-decoration: none;
+}
+#about {
+    padding: 2rem;
+    background: url('background-about.jpg') no-repeat center center;
+    background-size: cover;
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    #about {
+        padding: 1rem;
+    }
+}

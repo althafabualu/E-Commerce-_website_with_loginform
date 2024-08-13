@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Our Store</title>
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="product.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="shop">
+        <h2>Shop Our Products</h2>
+        <div class="product">
+            <img src="elegant-sneaker.png" alt="Product 1">
+            <h3>Elegant Sneakers</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Product 1')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="sneaker.png" alt="Product 2">
+            <h3>Classic Loafers</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Product 2')">Add to Cart</button>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Our Store. All rights reserved.</p>
+    </footer>
+    <script src="shop.js"></script>
+</body>
+</html>

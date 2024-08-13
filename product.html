@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store - Home</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><span>Register/Sign up</span></a></li>
+                <li><a href="product.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" >
+      
+        <div class="hero">
+            <h1>Find Your Perfect Pair</h1>
+            <p>Explore our exclusive collection of shoes designed for style and comfort.</p>
+            <a href="shop.html" class="btn">Shop Now</a>
+        </div>
+        <div class="featured-products">
+            <h2>Featured Products</h2>
+            <div class="product">
+                <img src="elegant-sneaker.png" alt="Featured Shoe 1">
+                <h3>Elegant Sneakers</h3>
+                <p>$89.99</p>
+                <button onclick="addToCart('Elegant Sneakers')">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="sneaker.png" alt="Featured Shoe 2">
+                <h3>Classic Loafers</h3>
+                <p>$129.99</p>
+                <button onclick="addToCart('Classic Loafers')">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Shoe Store. All rights reserved.</p>
+    </footer>
+
+    <script src="product.js"></script>
+</body>
+</html>
