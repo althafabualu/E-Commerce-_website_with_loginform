@@ -1,70 +1,70 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
-    const signUpForm = document.getElementById('signUpForm');
-    const signInForm = document.getElementById('signInForm');
-    const signUpEmail = document.getElementById('signUpEmail');
-    const signInEmail = document.getElementById('signInEmail');
-    const signUpPassword = document.getElementById('signUpPassword');
-    const signInPassword = document.getElementById('signInPassword');
-    const signUpError = document.getElementById('signUpError');
-    const signInError = document.getElementById('signInError');
+// Handle the toggle between sign-in and sign-up
+const signUpBtn = document.getElementById('signUpBtn');
+const signInBtn = document.getElementById('signInBtn');
+const container = document.querySelector('.container');
 
-    signUpButton.addEventListener('click', () => {
-        container.classList.add("active");
-    });
+signUpBtn.addEventListener('click', () => {
+    container.classList.add('right-panel-active');
+});
 
-    signInButton.addEventListener('click', () => {
-        container.classList.remove("active");
-    });
+signInBtn.addEventListener('click', () => {
+    container.classList.remove('right-panel-active');
+});
 
-    // Validate email format
-    function validateEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+// Handle form submission for registration
+document.getElementById('signUpSubmit').addEventListener('click', function () {
+    const name = document.getElementById('signUpName').value;
+    const contact = document.getElementById('signUpContact').value;
+    const password = document.getElementById('signUpPassword').value;
+    const rePassword = document.getElementById('signUpRePassword').value;
+    const errorDiv = document.getElementById('signUpError');
+
+    errorDiv.textContent = '';
+
+    if (password !== rePassword) {
+        errorDiv.textContent = 'Passwords do not match.';
+        return;
     }
 
-    // Handle sign-up form submission
-    signUpForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const email = signUpEmail.value;
-        const password = signUpPassword.value;
+    if (name && contact && password) {
+        // Save user details in localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const existingUser = users.find(user => user.contact === contact);
 
-        if (!validateEmail(email)) {
-            signUpError.textContent = "Please enter a valid email address.";
-        } else {
-            signUpError.textContent = "";
-
-            // Here you would normally send the data to the server for account creation
-            // For demonstration, we'll assume the sign-up is always successful.
-            alert("Account created successfully!");
-
-            // Redirect to the product page
-            window.location.href = "product.html";
+        if (existingUser) {
+            errorDiv.textContent = 'User already exists with this contact.';
+            return;
         }
-    });
 
-    // Handle sign-in form submission
-    signInForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const email = signInEmail.value;
-        const password = signInPassword.value;
+        users.push({ name, contact, password });
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Registration successful!');
+        // Optionally, redirect to a different page after registration
+        // window.location.href = 'product.html';
+    } else {
+        errorDiv.textContent = 'Please fill in all fields.';
+    }
+});
 
-        if (!validateEmail(email)) {
-            signInError.textContent = "Please enter a valid email address.";
+// Handle form submission for sign-in
+document.getElementById('signInSubmit').addEventListener('click', function () {
+    const contact = document.getElementById('signInContact').value;
+    const password = document.getElementById('signInPassword').value;
+    const errorDiv = document.getElementById('signInError');
+
+    errorDiv.textContent = '';
+
+    if (contact && password) {
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(user => user.contact === contact && user.password === password);
+
+        if (user) {
+            alert('Sign in successful!');
+            window.location.href = 'product.html';
         } else {
-            signInError.textContent = "";
-
-            // Simulate a server-side check for correct email and password
-            if (email === "user@example.com" && password === "password123") {
-                alert(`Login successful! Your password is: ${password}`);
-
-                // Redirect to the product page
-                window.location.href = "product.html";
-            } else {
-                signInError.textContent = "Incorrect email or password.";
-            }
+            errorDiv.textContent = 'Incorrect email or password.';
         }
-    });
+    } else {
+        errorDiv.textContent = 'Please fill in all fields.';
+    }
 });
